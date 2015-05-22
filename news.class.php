@@ -6,6 +6,7 @@ class quoideneuf
 	
 	public function __construct($db)
 	{
+		// Récupération de l'instance PDO
 		$this->_bdd = $db;
 	}		
 	
@@ -24,6 +25,7 @@ class quoideneuf
 	
 	public function ajoutNews($dnews, $message)
 	{
+		// Insertion de news
 		$SQL = $this->_bdd->prepare('INSERT INTO news(date_news,news) VALUE (?, ?)');
 		$SQL->execute(array($dnews,$message));
 		if($SQL)
@@ -39,6 +41,7 @@ class quoideneuf
 	
 	public function delNews($id)
 	{
+		//Suppression de news
 		$SQL = $this->_bdd->query('DELETE FROM news WHERE ID=' . $id);
 		if($SQL)
 		{
